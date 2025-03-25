@@ -48,7 +48,7 @@ MonoBehaviour:
   minHorizontalSpeed: 0.5
   maxHorizontalSpeed: 1.1
   horizontalSpeed: 1
-  verticalSpeed: 0.8
+  verticalSpeed: 1
   minXDistance: 1
   maxDdistance: 2
   xDistance: 4
