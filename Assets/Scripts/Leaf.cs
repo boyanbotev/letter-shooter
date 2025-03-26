@@ -13,11 +13,13 @@ public class Leaf : MonoBehaviour
     [SerializeField] private float xDistance = 4.0f;
     [SerializeField] private float destroyY = -6.0f;
     [SerializeField] private float rotationAmount = 15.0f;
+    GameObject leafAnimation;
 
     private void Awake()
     {
         horizontalSpeed = Random.Range(minHorizontalSpeed, maxHorizontalSpeed);
         xDistance = Random.Range(minXDistance, maxDdistance);
+        leafAnimation = transform.GetChild(0).gameObject;
     }
 
     private void Update()
@@ -41,6 +43,6 @@ public class Leaf : MonoBehaviour
     void Rotate()
     {
         float rotation = Mathf.Sin(Time.time * horizontalSpeed) * rotationAmount;
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
+        leafAnimation.transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 }
