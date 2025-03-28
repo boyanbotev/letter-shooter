@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class LetterCollectionManager : MonoBehaviour
 {
+    public static event System.Action OnCorrectCollect;
+    public static event System.Action OnFalseCollect;
     [SerializeField] string targetLetter = "s";
     [SerializeField] Transform collectTransform;
 
     private void OnEnable()
     {
         Target.OnProjectileCollision += HandleProjectileCollision;
+        Leaf.OnLeafDestroy += HandleLeafDestroy;
     }
 
     private void OnDisable()
     {
         Target.OnProjectileCollision -= HandleProjectileCollision;
+        Leaf.OnLeafDestroy -= HandleLeafDestroy;
     }
 
     private void HandleProjectileCollision(GameObject target, GameObject projectile)
@@ -32,10 +36,22 @@ public class LetterCollectionManager : MonoBehaviour
             {
                 Destroy(text.gameObject);
             }).SetEase(Ease.InCubic);
+
+            OnCorrectCollect?.Invoke();
         }
         else
         {
             Debug.Log("Incorrect letter!");
+            Destroy(target);
+            OnFalseCollect?.Invoke();
+        }
+    }
+
+    private void HandleLeafDestroy(string letter)
+    {
+        if (letter == targetLetter)
+        {
+            OnFalseCollect?.Invoke();
         }
     }
 }
