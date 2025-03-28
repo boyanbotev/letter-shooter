@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minHorizontalSpeed: 1
-  maxHorizontalSpeed: 2.4
+  maxHorizontalSpeed: 2.2
   horizontalSpeed: 0.5
   verticalSpeed: 0.1
   minXDistance: 1

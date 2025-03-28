@@ -876,8 +876,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6464372425798469184, guid: e4034eea9e3b10e4393d92f78a175d12, type: 3}
   container: {fileID: 1160260905}
-  minSpawnInterval: 0.7
-  maxSpawnInterval: 1
+  minSpawnInterval: 0.8
+  maxSpawnInterval: 1.2
   spawnPos: {x: 0, y: 5.3}
 --- !u!1 &1745900651
 GameObject:

@@ -56,12 +56,11 @@ public class Leaf : MonoBehaviour
         leafAnimation.transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
-
     void IncreaseSpeed()
     {
         if (increaseSpeed)
         {
-            DOTween.To(() => verticalSpeed, x => verticalSpeed = x, 7, 4f).SetEase(Ease.Linear);
+            DOTween.To(() => verticalSpeed, x => verticalSpeed = x, 6, 4f).SetEase(Ease.Linear);
         }
     }
 }
