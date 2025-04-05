@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class LetterCollectionManager : MonoBehaviour
@@ -7,6 +8,10 @@ public class LetterCollectionManager : MonoBehaviour
     public static event System.Action OnFalseCollect;
     [SerializeField] string targetLetter = "s";
     [SerializeField] Transform collectTransform;
+    [SerializeField] bool spawnNewLetter = false;
+    [SerializeField] SpawnManager spawnManager;
+    [SerializeField] float minSpawnDelay = 5f;
+    [SerializeField] float maxSpawnDelay = 6f;
 
     private void OnEnable()
     {
@@ -24,6 +29,11 @@ public class LetterCollectionManager : MonoBehaviour
     {
         Destroy(projectile);
         var text = target.GetComponentInChildren<TMPro.TextMeshPro>();
+
+        if (spawnNewLetter)
+        {
+            StartCoroutine(SpawnNewLetter());
+        }
 
         if (text.text == targetLetter)
         {
@@ -53,5 +63,12 @@ public class LetterCollectionManager : MonoBehaviour
         {
             OnFalseCollect?.Invoke();
         }
+    }
+
+    IEnumerator SpawnNewLetter()
+    {
+        yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+
+        var apple = spawnManager.Spawn();
     }
 }

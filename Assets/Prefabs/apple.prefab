@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6449378961028198935}
   - component: {fileID: 2954383453183727542}
   - component: {fileID: 7832967331083079112}
+  - component: {fileID: 8234582967922662531}
   m_Layer: 7
   m_Name: letter
   m_TagString: Untagged
@@ -176,6 +177,35 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2954383453183727542}
   m_maskType: 0
+--- !u!114 &8234582967922662531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188557625715508997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed2506594b1083459e530830deb8532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbols:
+  - value: '*'
+    weight: 1
+  - value: s
+    weight: 10
+  - value: '#'
+    weight: 1
+  - value: '*'
+    weight: 1
+  - value: '&'
+    weight: 1
+  - value: ~
+    weight: 1
+  - value: '!'
+    weight: 1
+  - value: '>'
+    weight: 1
 --- !u!1 &3907830832181685957
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,14 +385,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6464372425798469184}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_LinearDamping: 10
+  m_AngularDamping: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -373,4 +403,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

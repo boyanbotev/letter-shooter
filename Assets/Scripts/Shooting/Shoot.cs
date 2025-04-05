@@ -9,19 +9,9 @@ enum ShootState
 public class Shoot : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
-    [SerializeField] LineManager lineManager;
-    [SerializeField] float minShootVelocity = 8.0f;
-    [SerializeField] float maxShootVelocity = 14.0f;
-    [SerializeField] float velocityIncrement = 2f;
+    [SerializeField] float shootVelocity = 14.0f;
     [SerializeField] float rechargeTime = 0.5f;
-    float shootVelocity;
     ShootState shootState = ShootState.Ready;
-
-
-    private void Awake()
-    {
-        shootVelocity = minShootVelocity;
-    }
 
     void Update()
     {
@@ -30,17 +20,7 @@ public class Shoot : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            if (shootVelocity < maxShootVelocity)
-            {
-                shootVelocity += Time.deltaTime * velocityIncrement;
-            }
-
-            DrawLine();
-        }
-
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             ShootProjectile(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             Reset();
@@ -49,18 +29,10 @@ public class Shoot : MonoBehaviour
 
     private void Reset()
     {
-        shootVelocity = minShootVelocity;
-        lineManager.Clear();
         shootState = ShootState.Charging;
         StartCoroutine(Recharge());
     }
 
-    void DrawLine()
-    {
-        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var dir = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y).normalized;
-        lineManager.Draw(transform.position, dir * shootVelocity * shootVelocity * 0.05f);
-    }
 
     void ShootProjectile(Vector3 mousePos)
     {

@@ -1199,11 +1199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7316090126211576670, guid: ea47f59740e231a419f7c08df387b2d6, type: 3}
-  lineManager: {fileID: 116815326}
-  minShootVelocity: 8
-  maxShootVelocity: 14
-  velocityIncrement: 5
-  rechargeTime: 0.5
+  shootVelocity: 14
+  rechargeTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
